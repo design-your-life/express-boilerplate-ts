@@ -1,6 +1,7 @@
 import './utils/loadEnv';
-import app from 'src/server';
+import userService from 'src/services/user';
+import authService from 'src/services/auth';
 
-const port = Number(process.env.PORT || 3000);
-
-app.listen(port);
+// could easily be separate processes:
+userService.listen(process.env.USER_SERVICE_PORT || 3001);
+authService.listen(process.env.AUTH_SERVICE_PORT || 3002);
